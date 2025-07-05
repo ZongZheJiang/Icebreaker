@@ -39,7 +39,7 @@ export default function IcebreakerDisplay({ initialIcebreaker }: { initialIcebre
         {icebreaker.category}
       </span>
       <p className="text-2xl font-medium text-gray-900 dark:text-white mb-6 min-h-[100px]">
-        "{icebreaker.question}"
+        {`"${icebreaker.question}"`}
       </p>
       <button
         onClick={getNewIcebreaker}
