@@ -2,7 +2,7 @@
 "use client"; // This is a client component
 
 import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import { createClient } from '../lib/supabaseClient'; // Ensure this path is correct
 
 // Define the type for our icebreaker object
 type Icebreaker = {
@@ -15,6 +15,7 @@ type Icebreaker = {
 export default function IcebreakerDisplay({ initialIcebreaker }: { initialIcebreaker: Icebreaker }) {
   const [isLoading, setIsLoading] = useState(false);
   const [icebreaker, setIcebreaker] = useState<Icebreaker>(initialIcebreaker);
+  const supabase = createClient(); // Create Supabase client
 
   const getNewIcebreaker = async () => {
     setIsLoading(true);

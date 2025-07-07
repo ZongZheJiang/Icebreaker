@@ -1,39 +1,19 @@
 // app/page.tsx
-import { supabase } from '../../lib/supabaseClient';
-import IcebreakerDisplay from '../../components/IcebreakerDisplay';
+import Link from 'next/link'
 
-// Force this page to be dynamically rendered
-export const revalidate = 0;
-
-export default async function HomePage() {
-  // Fetch the initial data on the server
-  const { data: initialData, error } = await supabase.rpc('get_random_icebreaker');
-
-  if (error || !initialData || initialData.length === 0) {
-    // Handle the case where initial data fetching fails
-    return (
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
-        <p className="text-red-500">Could not load an icebreaker. Please try again later.</p>
-      </main>
-    );
-  }
-
-  // The RPC returns an array, so we grab the first item.
-  const initialIcebreaker = initialData[0];
-
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
-      <div className="text-center mb-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
-          Random Icebreaker
-        </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
-          Break the ice with a random question!
-        </p>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center text-center">
+      <h1 className="text-5xl font-bold mb-4">Welcome to Next.js + Supabase Auth</h1>
+      <p className="text-lg mb-8">A simple application with separate routes for logged-in and logged-out users.</p>
+      <div className="flex gap-4">
+        <Link href="/login" className="px-6 py-2 bg-blue-600 rounded text-white hover:bg-blue-700">
+          Go to Login
+        </Link>
+        <Link href="/dashboard" className="px-6 py-2 bg-green-600 rounded text-white hover:bg-green-700">
+          Go to Dashboard
+        </Link>
       </div>
-      
-      {/* We pass the server-fetched data as a prop to the client component */}
-      <IcebreakerDisplay initialIcebreaker={initialIcebreaker} />
-    </main>
-  );
+    </div>
+  )
 }
