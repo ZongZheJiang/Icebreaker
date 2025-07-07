@@ -1,6 +1,5 @@
 // app/dashboard/page.tsx
 import { createClient } from '../../lib/supabaseServer'
-import { logout } from '@/app/auth/actions'
 import { redirect } from 'next/navigation'
 import LoggedInView from '../../components/LoggedInView'
 
