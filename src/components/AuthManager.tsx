@@ -1,5 +1,5 @@
 // app/components/AuthManager.tsx
-import { createClient } from '../utils/supabaseClient'
+import { createClient } from '../lib/supabaseClient'
 import AuthForm from './AuthForm'
 import LoggedInView from './LoggedInView'
 
